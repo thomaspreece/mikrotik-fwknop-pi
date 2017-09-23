@@ -24,6 +24,8 @@ You'll also want to install fwnop client as well if you don't have any keys alre
 sudo apt-get install fwknop-client
 ```
 
+If you want fwknop to autostart on boot you'll also need to change `START_DAEMON="no"` to `START_DAEMON="yes"` in `/etc/default/fwknop-server`
+
 ### Mikrotik API User
 You'll want to set up a new user on the router with permissions of API and WRITE. This prevents the API user from using winbox or reading settings. Note down the username and password for later.
 
