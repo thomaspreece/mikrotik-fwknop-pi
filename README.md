@@ -32,12 +32,9 @@ You'll want to set up a new user on the router with permissions of API and WRITE
 ### Python Dependancies
 You'll need python installed and the following dependancies:
 ```
-sudo pip install librouteros
-```
-
-Note if you get an error, it might be that your setuptools needs updating:
-```
 sudo pip install --upgrade setuptools
+sudo pip install --upgrade wheel
+sudo pip install librouteros==2.4
 ```
 
 ## Setup

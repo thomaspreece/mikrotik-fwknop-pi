@@ -17,10 +17,10 @@ api = connect(host=args.routerip, username=args.routeruser, password=args.router
 
 time = int(args.time)
 
-days = (time/(60*60*24))
-hours = (time/(60*60) % 24)
-mins = (time/60 % 60)
-secs = (time % 60)
+days = int(time/(60*60*24))
+hours = int(time/(60*60) % 24)
+mins = int(time/60 % 60)
+secs = int(time % 60)
 
 api(cmd='/ip/firewall/address-list/add', list="FWKNOP_{0}_{1}".format(args.protocol, args.port), address=args.clientip, timeout="{0}d {1:02d}:{2:02d}:{3:02d}".format(days,hours,mins,secs))
 
