@@ -1,5 +1,6 @@
 from argparse import ArgumentParser
 from librouteros import connect
+import ssl 
 
 parser = ArgumentParser(description='Add addresses to Firewall list on router. Listname is FWKNOP_PROTO_PORT')
 parser.add_argument('--routerip', help='IP address of router', default="192.168.1.1")
@@ -12,8 +13,11 @@ parser.add_argument('port', help='Port')
 parser.add_argument('time', help='Length of time (in seconds) to keep address in list')
 args = parser.parse_args()
 
+ctx = ssl.create_default_context()
+ctx.check_hostname = False
+ctx.verify_mode = ssl.CERT_NONE
 
-api = connect(host=args.routerip, username=args.routeruser, password=args.routerpass)
+api = connect(host=args.routerip, username=args.routeruser, password=args.routerpass, ssl_wrapper=ctx.wrap_socket, port=8729)
 
 time = int(args.time)
 
